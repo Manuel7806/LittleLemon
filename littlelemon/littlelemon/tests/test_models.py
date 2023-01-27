@@ -3,7 +3,18 @@ from restaurant.models import Menu
 
 
 class MenuTest(TestCase):
-    def menu_test(self):
-        item = Menu.objects.create(
-            title='Chef Salad', price=5.50, inventory=100)
-        self.assertEqual(item, 'Chef Salad : 5.50')
+    def setUp(self):
+        self.item = Menu.objects.create(
+            title='Lasagna', price=7.75, inventory=100)
+
+    def test_get_name(self):
+        self.assertEqual(self.item.title, 'Lasagna')
+
+    def test_get_price(self):
+        self.assertEqual(self.item.price, 7.75)
+
+    def test_get_inventory(self):
+        self.assertEqual(self.item.inventory, 100)
+
+    def test_instance(self):
+        self.assertIsInstance(self.item, Menu)

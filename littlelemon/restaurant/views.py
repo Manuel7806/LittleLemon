@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView
-from rest_framework.generics import RetrieveAPIView, DestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView, DestroyAPIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
@@ -17,7 +16,7 @@ class MenuItemView(ListCreateAPIView):
     serializer_class = MenuSerializer
 
 
-class SingleItemView(RetrieveAPIView, DestroyAPIView):
+class SingleItemView(DestroyAPIView, RetrieveUpdateAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
