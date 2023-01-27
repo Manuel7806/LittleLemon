@@ -7,6 +7,9 @@ class MenuTest(TestCase):
         self.item = Menu.objects.create(
             title='Lasagna', price=7.75, inventory=100)
 
+    def test_get_item(self):
+        self.assertEqual(str(self.item), 'Lasagna : 7.75')
+
     def test_get_name(self):
         self.assertEqual(self.item.title, 'Lasagna')
 
